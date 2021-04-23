@@ -1,0 +1,36 @@
+{
+  "writeKey": "a8668338373071928218-731362385fe81a1c841c429f915ffe48b0503694a0e8d27103e0a4bdf44ef395",
+  "readKey": "a8668338373071928218-0668e562ab63ad99a83186ee46e70c9830096e52dbe7ba236880c96725f74503",
+  
+   "transformations": [
+	    {
+	      "name": "cleaned_file",
+	      "source": "${file}",
+	      "operations": ["remove: _en"]
+	    },
+	    {
+	      "name": "file_without_ext",
+	      "source": "${file}",
+	      "operations": ["substringBeforeLast: ."]
+	    },
+	    {
+	        "name": "lang_from_path",
+	        "source": "${lang}",
+	        "operations": [
+	          "remove: -MX"
+	        ]
+	    }
+	],
+
+  "upload": {  
+    "type": "json",
+    "folder": "src/locales/en",
+    "files": [
+      "common.json"
+    ]       
+  },
+  
+  "download": {
+    "metadataFileJson": "languages.json",
+    "files": "src/locales/${lang_from_path}/${file_without_ext}.json"  }
+}
