@@ -7,6 +7,20 @@ import Seo from "../components/seo"
 
 const IndexPage = () => {
 
+  React.useEffect(() => {
+    fetch('https://freegeoip.app/json/')
+    .then(response => response.json())
+    .then(data => {
+      if (data.country_code === 'CA') {
+        window.location.replace('https://virtualruncanada.ca/');
+      } else if (data.country_code === 'US'){
+        window.location.replace('https://virtualrun.us/');
+      } else if (data.country_code === 'AU'){
+        window.location.replace('https://virtualrunaustralia.com/');
+      } 
+    })
+  })
+
   return(
     <Layout>
       <Seo title="Home" />
